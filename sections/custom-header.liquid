@@ -1,20 +1,57 @@
 <div class="custom-header-wrapper">
-  <div class="custom-header-inner">
-    {%- if section.settings.logo != blank -%}
-      {% render 'image', image: section.settings.logo, class: 'custom-logo' %}
-    {%- endif -%}
-    {%- if section.settings.main_title != blank -%}
-      <p>{{section.settings.main_title}}</p>
-    {%- endif -%}
-    {%- if section.settings.cta_url != blank -%}
-      <a href="{{section.settings.cta_url}}" class="button-primary">{{section.settings.cta_text}}
-        <svg width="69" height="30" viewBox="0 0 69 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2.75879 13.1458L0.758789 13.1458L0.758789 17.1458L2.75879 17.1458L2.75879 15.1458L2.75879 13.1458ZM68.173 16.56C68.9541 15.779 68.9541 14.5127 68.173 13.7316L55.4451 1.00368C54.664 0.222633 53.3977 0.222633 52.6167 1.00368C51.8356 1.78473 51.8356 3.05106 52.6167 3.83211L63.9304 15.1458L52.6167 26.4595C51.8356 27.2406 51.8356 28.5069 52.6167 29.288C53.3977 30.069 54.664 30.069 55.4451 29.288L68.173 16.56ZM2.75879 15.1458L2.75879 17.1458L66.7588 17.1458L66.7588 15.1458L66.7588 13.1458L2.75879 13.1458L2.75879 15.1458Z" fill="black"/>
-        </svg>
-      </a>
-    {%- endif -%}
+  <div class="page-width">  
+    <div class="custom-header-inner">
+      <button class="trigger-menu" data-target="mobile-nav">
+        <svg width="20" height="13" class="hamburger-icon" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 6.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 1.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 11.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="15" class="close-icon" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 13.9997L13.7279 1.27177" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 1.00031L13.7279 13.7282" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          
+      </button>
+      {%- if section.settings.logo != blank -%}
+        {% render 'image', image: section.settings.logo, class: 'custom-logo' %}
+      {%- endif -%}
+      {%- if section.settings.main_title != blank -%}
+        <p class="header-text">{{section.settings.main_title}}</p>
+      {%- endif -%}
+      {%- if section.settings.cta_url != blank -%}
+        <a href="{{section.settings.cta_url}}" class="button-primary">{{section.settings.cta_text}}
+          {%- render 'cta-arrow' -%}
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="mobile-component" id="mobile-nav">
+      {%- if section.settings.main_title != blank -%}
+        <p class="header-text">{{section.settings.main_title}}</p>
+      {%- endif -%}
+      {%- if section.settings.cta_url != blank -%}
+        <a href="{{section.settings.cta_url}}" class="button-primary">{{section.settings.cta_text}}
+          {%- render 'cta-arrow' -%}
+        </a>
+      {%- endif -%}
+    </div>
   </div>
 </div>
+<script>
+  document.querySelector('.trigger-menu').addEventListener('click', function() {
+    const target = this.getAttribute('data-target');
+    const mobileNav = document.getElementById(target);
+    if (mobileNav.style.display === 'block') {
+      mobileNav.style.display = 'none';
+      this.querySelector('.close-icon').style.display = 'none';
+      this.querySelector('.hamburger-icon').style.display = 'block';
+    } else {
+      mobileNav.style.display = 'block';
+      this.querySelector('.close-icon').style.display = 'block';
+      this.querySelector('.hamburger-icon').style.display = 'none';
+    }
+  });
+</script>
 {% schema %}
   {
     "name": "Custom Header",

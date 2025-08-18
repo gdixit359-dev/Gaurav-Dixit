@@ -1,7 +1,10 @@
 <div class="banner-image-text-wrapper">
   <div class="banner-image-inner">
     {%- if section.settings.background_image != blank -%}
-      {% render 'image', image: section.settings.background_image, class: 'background-image' %}
+      {% render 'image', image: section.settings.background_image, class: 'background-image mobile-hide' %}
+    {%- endif -%}
+    {%- if section.settings.background_image_mobile != blank -%}
+      {% render 'image', image: section.settings.background_image_mobile, class: 'background-image desktop-hide' %}
     {%- endif -%}
     <div class="banner-image-text-content">
       {% if section.settings.heading != blank %}
@@ -11,15 +14,19 @@
         <p>{{ section.settings.description }}</p>
       {%- endif -%}
       {%- if section.settings.button_text and section.settings.button_url %}
-        <a href="{{ section.settings.button_url }}" class="button-primary">{{ section.settings.button_text }}</a>
+        <a href="{{ section.settings.button_url }}" class="button-primary button-dark">{{ section.settings.button_text }}
+          {%- render 'cta-arrow' -%}
+        </a>
       {%- endif -%}
     </div>
   </div>
-  {%- if section.settings.bottom_text != blank -%}
-    <div class="banner-image-bottom-text">
-      <p>{{ section.settings.bottom_text }}</p>
-    </div>
-  {%- endif -%}
+    {%- if section.settings.bottom_text != blank -%}
+      <div class="banner-image-bottom-text">
+        <div class="page-width">
+        <p>{{ section.settings.bottom_text }}</p>
+        </div>
+      </div>
+    {%- endif -%}
 </div>
 {% schema %}
   {
@@ -30,6 +37,11 @@
         "type": "image_picker",
         "id": "background_image",
         "label": "Background Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image_mobile",
+        "label": "Background Image Mobile"
       },
       {
         "type": "text",
