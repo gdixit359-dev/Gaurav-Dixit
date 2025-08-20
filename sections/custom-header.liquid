@@ -1,0 +1,91 @@
+<div class="custom-header-wrapper">
+  <div class="page-width">  
+    <div class="custom-header-inner">
+      <button class="trigger-menu" data-target="mobile-nav">
+        <svg width="20" height="13" class="hamburger-icon" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 6.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 1.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 11.5H19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg width="15" class="close-icon" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 13.9997L13.7279 1.27177" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 1.00031L13.7279 13.7282" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          
+      </button>
+      {%- if section.settings.logo != blank -%}
+        {% render 'image', image: section.settings.logo, class: 'custom-logo' %}
+      {%- endif -%}
+      {%- if section.settings.main_title != blank -%}
+        <p class="header-text">{{section.settings.main_title}}</p>
+      {%- endif -%}
+      {%- if section.settings.cta_url != blank -%}
+        <a href="{{section.settings.cta_url}}" class="button-primary">{{section.settings.cta_text}}
+          {%- render 'cta-arrow' -%}
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="mobile-component" id="mobile-nav">
+      {%- if section.settings.main_title != blank -%}
+        <p class="header-text">{{section.settings.main_title}}</p>
+      {%- endif -%}
+      {%- if section.settings.cta_url != blank -%}
+        <a href="{{section.settings.cta_url}}" class="button-primary">{{section.settings.cta_text}}
+          {%- render 'cta-arrow' -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+<script>
+  document.querySelector('.trigger-menu').addEventListener('click', function() {
+    const target = this.getAttribute('data-target');
+    const mobileNav = document.getElementById(target);
+    if (mobileNav.style.display === 'block') {
+      mobileNav.style.display = 'none';
+      this.querySelector('.close-icon').style.display = 'none';
+      this.querySelector('.hamburger-icon').style.display = 'block';
+    } else {
+      mobileNav.style.display = 'block';
+      this.querySelector('.close-icon').style.display = 'block';
+      this.querySelector('.hamburger-icon').style.display = 'none';
+    }
+  });
+</script>
+{% schema %}
+  {
+    "name": "Custom Header",
+    "class": "custom-header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "text",
+        "id": "main_title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "cta_text",
+        "label": "Butten Text"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "Butten URL"
+      }
+      
+    ],
+    "presets": [
+      {
+        "name": "Custom Header",
+        "category": "Custom Sections",
+        "settings": {}
+      }
+    ]
+  }
+  {% endschema %}
+  

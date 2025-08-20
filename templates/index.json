@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
@@ -57,10 +58,12 @@
         "text_YLPk4p",
         "button_H9gpTf"
       ],
+      "disabled": true,
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
         "media_type_2": "image",
+        "link": "",
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -257,6 +260,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "all",
@@ -277,10 +281,101 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "custom_header_B4XAfM": {
+      "type": "custom-header",
+      "name": "Custom Header",
+      "settings": {
+        "logo": "shopify://shop_images/Group_1000007777_1.png",
+        "main_title": "Find the ideal gift for your loved ones.",
+        "cta_text": "choose gift",
+        "cta_url": "#"
+      }
+    },
+    "background_image_with_text_dAUHLt": {
+      "type": "background-image-with-text",
+      "name": "Banner Image with Text",
+      "settings": {
+        "background_image": "shopify://shop_images/image_71_1.jpg",
+        "background_image_mobile": "shopify://shop_images/Frame_1.png",
+        "heading": "The Gift Guide",
+        "description": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
+        "button_text": "Shop Now",
+        "button_url": "#",
+        "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+      }
+    },
+    "custom_featured_products_NK7dKR": {
+      "type": "custom-featured-products",
+      "blocks": {
+        "product_krgeX9": {
+          "type": "product",
+          "settings": {
+            "product": "black-leather-bag",
+            "left_pos": 50,
+            "top_pos": 60
+          }
+        },
+        "product_TtgHar": {
+          "type": "product",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "left_pos": 70,
+            "top_pos": 50
+          }
+        },
+        "product_ALKh3V": {
+          "type": "product",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "left_pos": 50,
+            "top_pos": 20
+          }
+        },
+        "product_hcKpBN": {
+          "type": "product",
+          "settings": {
+            "product": "classic-leather-jacket",
+            "left_pos": 60,
+            "top_pos": 10
+          }
+        },
+        "product_xJDKFm": {
+          "type": "product",
+          "settings": {
+            "product": "classic-varsity-top",
+            "left_pos": 50,
+            "top_pos": 20
+          }
+        },
+        "product_p4RaYL": {
+          "type": "product",
+          "settings": {
+            "product": "dark-denim-top",
+            "left_pos": 50,
+            "top_pos": 70
+          }
+        }
+      },
+      "block_order": [
+        "product_krgeX9",
+        "product_TtgHar",
+        "product_ALKh3V",
+        "product_hcKpBN",
+        "product_xJDKFm",
+        "product_p4RaYL"
+      ],
+      "name": "Custom Featured Products",
+      "settings": {
+        "title": "Tisso vison in the wild"
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "custom_header_B4XAfM",
+    "background_image_with_text_dAUHLt",
+    "custom_featured_products_NK7dKR"
   ]
 }

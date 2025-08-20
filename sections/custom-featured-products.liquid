@@ -1,0 +1,92 @@
+{{ 'custom-quick-add.js' | asset_url | script_tag }}
+<div class="featured-products-wrapper">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="section-heading">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="featured-products-inner">
+      {% for block in section.blocks %}
+        {%- assign product = block.settings.product -%}
+        <div class="featured-product-item">
+          <span class="featured-product-link">
+            {% render 'image', image: product.featured_image, height: 300, class: 'product-image' %}
+            <span class="quickadd-cta quickadd-{{section.id}}-{{forloop.index}}" data-handle="{{ product.handle }}">
+              <img src="https://cdn.shopify.com/s/files/1/0699/8160/2026/files/image_72.png?v=1755547294" loading="lazy"/>
+            </span>
+          </span>
+        </div>
+        {%- style -%}
+          .quickadd-{{section.id}}-{{forloop.index}}{
+            left: {{ block.settings.left_pos }}%;
+            top: {{ block.settings.top_pos }}%;
+          }
+        {%- endstyle -%}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<!-- Popup Modal -->
+<div id="quickadd-popup" class="quickadd-popup">
+  <div class="quickadd-overlay"></div>
+  <div class="quickadd-content">
+    <button class="quickadd-close"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5.0376 4.94354L13.5229 13.4288" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+    <path d="M5.0376 13.4285L13.5229 4.94325" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+    </svg>
+    </button>
+    <div id="quickadd-body"></div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Custom Featured Products",
+    "class": "custom-featured-products",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default":"Tisso vison in the wild"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Select product"
+          },
+          {
+            "type":"range",
+            "id":"left_pos",
+            "label":"Left Position",
+            "default": 50,
+            "min": 10,
+            "max": 100,
+            "step": 10,
+            "unit": "%"
+          },
+          {
+            "type":"range",
+            "id":"top_pos",
+            "label":"Top Position",
+            "default": 50,
+            "min": 10,
+            "max": 100,
+            "step": 10,
+            "unit": "%"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Featured Products",
+        "category": "Custom Sections"
+      }
+    ]
+  }
+{% endschema %}
